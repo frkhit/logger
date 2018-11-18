@@ -83,10 +83,12 @@ func Init(name string, verbose, systemLog bool, logFile io.Writer) *Logger {
 			log.Fatal(err)
 		}
 	}
-
-	iLogs := []io.Writer{logFile}
-	wLogs := []io.Writer{logFile}
-	eLogs := []io.Writer{logFile}
+	
+	if logFile != nil {
+		iLogs = append(iLogs, logFile)
+		wLogs = append(wLogs, logFile)
+		eLogs = append(eLogs, logFile)
+	}
 	if il != nil {
 		iLogs = append(iLogs, il)
 	}
