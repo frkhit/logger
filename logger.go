@@ -83,7 +83,9 @@ func Init(name string, verbose, systemLog bool, logFile io.Writer) *Logger {
 			log.Fatal(err)
 		}
 	}
-	
+	var iLogs []io.Writer
+	var wLogs []io.Writer
+	var eLogs []io.Writer
 	if logFile != nil {
 		iLogs = append(iLogs, logFile)
 		wLogs = append(wLogs, logFile)
